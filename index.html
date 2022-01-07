@@ -54,7 +54,7 @@
 						<v-sheet
 						  id="scroll-threshold-example"
 						  class="overflow-y-auto pb-16"
-						  max-height="650"
+						  max-height="600"
 						>
 						
 								<v-carousel>
@@ -159,7 +159,7 @@
 								<v-list-item
 								  v-for="item in master"
 								  :key="item.title"
-								  :to="item.url"
+								  :href="item.url"
 								>
 								  <v-list-item-icon :href="item.url">
 									<v-icon>{{ item.icon }}</v-icon>
