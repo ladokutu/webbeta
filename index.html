@@ -159,7 +159,7 @@
 								<v-list-item
 								  v-for="item in master"
 								  :key="item.title"
-								  link
+								  :to="item.url"
 								>
 								  <v-list-item-icon :href="item.url">
 									<v-icon>{{ item.icon }}</v-icon>
