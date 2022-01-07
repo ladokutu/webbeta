@@ -129,11 +129,12 @@
 							  scroll-target="#scroll-threshold-example"
 							  
 						  >
-							<v-btn v-for="(item, i) in master">
-							  <span>{{item.nama_menu}}</span>
-
-							  <v-icon>{{ item.icon }}</v-icon>
-							</v-btn>
+							<v-list-item v-for="(item, i) in master">
+								<v-btn :href="item.url">
+								  <span>{{item.nama_menu}}</span>
+								  <v-icon>{{ item.icon }}</v-icon>
+								</v-btn>
+							</v-list-item>
 						  </v-bottom-navigation>
 						  
 						  
