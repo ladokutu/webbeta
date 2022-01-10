@@ -200,14 +200,11 @@ new Vue({
             		length: 400,
             		visible: 5,
 			loading: null,
+			drawer: null,
 			master: [],
 			movie: [],
 			box: [],
-			
-			drawers: [
-				  { title: 'Home', icon: 'mdi-view-dashboard' },
-				  { title: 'About', icon: 'mdi-forum' },
-				],
+			loading:null
 		},
 		mounted(){
 			this.getItems();
