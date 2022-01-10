@@ -46,7 +46,11 @@
 						  <v-toolbar-title>Ladokutu Info Movie</v-toolbar-title>
 
 						  <v-spacer></v-spacer>
-
+						 <v-text-field
+							v-model="search"
+							label="Cari Movie"
+							clearable
+						  ></v-text-field>	
 						  <v-btn icon>
 							<v-icon>mdi-magnify</v-icon>
 						  </v-btn>
@@ -212,7 +216,8 @@ new Vue({
 			master: [],
 			movie: [],
 			box: [],
-			loading:null
+			loading:null,
+			search:null,
 		},
 		mounted(){
 			this.getItems();
