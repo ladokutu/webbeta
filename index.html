@@ -113,7 +113,9 @@
 								  <div class="text-center">
 										<v-pagination
 										  v-model="page"
-										  :length="6"
+										  :length="length"
+										  :total-visible="visible"
+										  @next="handlePageChange"
 										></v-pagination>
 									</div>
 								  
@@ -195,9 +197,9 @@ new Vue({
 		vuetify: new Vuetify(),
 		data: {
 			page: 1,
+            		length: 400,
+            		visible: 5,
 			loading: null,
-			drawer: null,
-			
 			master: [],
 			movie: [],
 			box: [],
@@ -246,6 +248,10 @@ new Vue({
 				})
 				this.loading = false;
 			},
+			handlePageChange(value) {
+			  this.currentPage = value;
+			  this.getMovie();
+			}
 		}
 })
 </script>
