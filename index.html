@@ -23,6 +23,7 @@
     });
   });
 </script>
+
 </head>
 
 
@@ -46,12 +47,17 @@
 						  <v-toolbar-title>Ladokutu Info Movie</v-toolbar-title>
 
 						  <v-spacer></v-spacer>
-						 <v-text-field
+							
+							
+						  <v-text-field
 							v-model="search"
 							label="Cari Movie"
+							
 							clearable
 						  ></v-text-field>	
-						  <v-btn icon @click="getMovieSearch">
+						  <v-btn icon 
+							@click="getMovieSearch"
+							>
 							<v-icon>mdi-magnify</v-icon>
 						  </v-btn>
 						</v-toolbar>
@@ -63,7 +69,9 @@
 						  height="100%"
 						>
 							<v-container >
-								<v-carousel>
+								<v-carousel 
+								height="300"
+								>
 									<v-carousel-item
 									  v-for="(item,i) in box"
 									  :key="i"
@@ -71,13 +79,15 @@
 									  reverse-transition="fade-transition"
 									  transition="fade-transition"
 									  :href="item.watch"
+									  
 									>
 									  <v-card-title 
 									  class="white--text mt-8"
 									  v-text="item.title"></v-card-title>
+									  
 									</v-carousel-item>
 								</v-carousel>	
-							</v-container >		
+							</v-container >	
 								<v-container >
 								  <v-row dense>
 									<v-col
@@ -87,13 +97,16 @@
 									  
 									>
 									  <v-card 
-									  :href="card.watch"
-									  :loading="loading">
+										
+										@click="bukamodal(card)"
+										:loading="loading">
 										<v-img
+										  
 										  :src="card.thumbnail"
 										  class="white--text align-end"
 										  gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
 										  height="150px"
+										  
 										>
 										  <v-card-title v-text="card.title"></v-card-title>
 										  
@@ -126,8 +139,8 @@
 										  :length="length"
 										  :total-visible="visible"
 										  @next="handlePageChange"
-									          @previous="handlePageChange"
-									          @input="handlePageChange"
+										  @previous="handlePageChange"
+										  @input="handlePageChange"
 										></v-pagination>
 								</div>  
 								  
@@ -189,7 +202,32 @@
 							</v-navigation-drawer>
 					</v-card>
 					
-					
+					<v-dialog
+						  v-model="dialog"
+						  max-width="800"
+						>
+						  <v-card 
+						  v-for="watch" 
+						  
+							>
+							<v-card-title class="text-h5">
+							  {{watch.title}}
+							</v-card-title>
+
+							<iframe id="ifrm" :src="watch.src" width="800" height="500"></iframe>
+
+							<v-card-actions>
+							  <v-spacer></v-spacer>
+							  <v-btn
+								color="green darken-1"
+								text
+								@click="dialog = false"
+							  >
+								Close
+							  </v-btn>
+							</v-card-actions>
+						  </v-card>
+						</v-dialog>
 					
 				</template>
 			
@@ -208,16 +246,20 @@ new Vue({
 		el: '#main',
 		vuetify: new Vuetify(),
 		data: {
+			dialog: false,
+			judul: null,
 			page: 1,
-            		length: 635,
-            		visible: 10,
+            length: 630,
+            visible: 5,
 			loading: null,
 			drawer: null,
 			master: [],
 			movie: [],
 			box: [],
 			loading:null,
-			search:null,
+			search: null,
+			watch: [],
+			url:null,
 		},
 		mounted(){
 			this.getItems();
@@ -272,7 +314,24 @@ new Vue({
 			handlePageChange(value) {
 			  this.currentPage = value;
 			  this.getMovie();
-			}
+			},
+			bukamodal: function (value) {
+				console.log(value)
+				this.dialog = true;
+				this.loading = true;
+				axios.get('https://api-ladokutu-movie.herokuapp.com/watch?url='+value.watch)
+					.then(res => {
+					this.watch=res.data;
+				})
+				.catch(err => {
+					console.log(err);
+				})
+				this.loading = false;
+										
+			},
+			  
+			  
+			
 		}
 })
 </script>
