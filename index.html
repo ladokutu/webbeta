@@ -51,7 +51,7 @@
 							label="Cari Movie"
 							clearable
 						  ></v-text-field>	
-						  <v-btn icon>
+						  <v-btn icon @click="getMovieSearch">
 							<v-icon>mdi-magnify</v-icon>
 						  </v-btn>
 						</v-toolbar>
@@ -239,6 +239,17 @@ new Vue({
 			getMovie: function () {
 				this.loading = true;
 				axios.get('https://api-ladokutu-movie.herokuapp.com/movie?page='+this.page)
+					.then(res => {
+					this.movie=res.data.result;
+				})
+				.catch(err => {
+					console.log(err);
+				})
+				this.loading = false;
+			},
+			getMovieSearch: function () {
+				this.loading = true;
+				axios.get('https://api-ladokutu-movie.herokuapp.com/search/'+this.search)
 					.then(res => {
 					this.movie=res.data.result;
 				})
