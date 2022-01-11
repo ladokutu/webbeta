@@ -69,8 +69,8 @@
 				
 				<v-app-bar app>
 				<v-toolbar
-						  color="indigo"
-						  dark fixed-header
+					color="indigo"
+					dark fixed-header
 				>
 						  <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
@@ -92,8 +92,8 @@
 						  </v-btn>
 				</v-toolbar>
 				</v-app-bar>	   
-				
-				<v-container >
+				<v-content>
+					<v-container fluid>
 								<v-carousel 
 								height="300"
 								>
@@ -112,8 +112,8 @@
 									  
 									</v-carousel-item>
 								</v-carousel>	
-				</v-container >	
-				<v-container >
+					</v-container >	
+					<v-container fluid>
 									<v-row dense>
 									<v-col
 									  v-for="card in movie"
@@ -169,18 +169,18 @@
 										></v-pagination>
 								</div>  
 								  
-				</v-container>
-								
+					</v-container>
+					
 				
 							<!-- Iklan 1 -->
-				<ins class="adsbygoogle"
-								 style="display:block"
-								 data-ad-client="ca-pub-5978328351134233"
-								 data-ad-slot="4407379250"
-								 data-ad-format="auto"
-								 data-full-width-responsive="true">
-				</ins>
-						
+					<ins class="adsbygoogle"
+									 style="display:block"
+									 data-ad-client="ca-pub-5978328351134233"
+									 data-ad-slot="4407379250"
+									 data-ad-format="auto"
+									 data-full-width-responsive="true">
+					</ins>
+				</v-content>		
 				<v-footer app>		
 				<v-bottom-navigation 	  
 					absolute
