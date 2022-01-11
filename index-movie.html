@@ -92,7 +92,7 @@
 						  </v-btn>
 				</v-toolbar>
 				</v-app-bar>	   
-				
+				<v-content>	
 					<v-container fluid>
 								<v-carousel 
 								height="300"
@@ -114,27 +114,18 @@
 								</v-carousel>	
 					</v-container >	
 					<v-container fluid>
-									<v-row dense>
+								<v-row dense>
 									<v-col
 									  v-for="card in movie"
 									  :key="card.title"
-									  :cols="3"
-									  
-									>
-									  <v-card 
-										
-										@click="bukamodal(card)"
+									  :cols="3">
+									  <v-card @click="bukamodal(card)"
 										:loading="loading">
-										<v-img
-										  
-										  :src="card.thumbnail"
+										<v-img :src="card.thumbnail"
 										  class="white--text align-end"
 										  gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-										  height="150px"
-										  
-										>
+										  height="150px">
 										  <v-card-title v-text="card.title"></v-card-title>
-										  
 										</v-img>
 										<v-card-text>
 											{{card.rating}},{{card.duration}}
@@ -142,59 +133,63 @@
 											{{card.genre}}
 										</v-card-text>
 										<v-card-actions>
-										  <v-spacer></v-spacer>
-
-										  
-
 										  <v-btn icon>
 											<v-icon>mdi-share-variant</v-icon>
 										  </v-btn>
 										</v-card-actions>
 									  </v-card>
-									  
-									 
-									  
 									</v-col>
-									
-									
+									<v-col :cols="3">
+										<v-card >
+										  <v-card-title >Iklan By Google</v-card-title>
+										</v-img>
+										<v-card-text>
+											<ins class="adsbygoogle"
+												style="display:block"
+												data-ad-client="ca-pub-5978328351134233"
+												data-ad-slot="4407379250"
+												data-ad-format="auto"
+												data-full-width-responsive="true">
+											</ins>
+										</v-card-text>
+										
+									  </v-card>
+									</v-col>
 								  </v-row>
-								<div class="text-center">
-										<v-pagination
-										  v-model="page"
-										  :length="length"
-										  :total-visible="visible"
-										  @next="handlePageChange"
-										  @previous="handlePageChange"
-										  @input="handlePageChange"
-										></v-pagination>
-								</div>  
+								 
 								  
 					</v-container>
+					<v-container fluid>
+						<v-col>
+							<v-pagination
+								v-model="page"
+								:length="length"
+								:total-visible="visible"
+								@next="handlePageChange"
+								@previous="handlePageChange"
+								@input="handlePageChange"
+							></v-pagination>
+							<v-card-text>
+								<v-spacer></v-spacer>
+							</v-card-text>
+						</v-col>
+					</v-container> 
+				
+				</v-content>
 					
-				
-							<!-- Iklan 1 -->
-					<ins class="adsbygoogle"
-									 style="display:block"
-									 data-ad-client="ca-pub-5978328351134233"
-									 data-ad-slot="4407379250"
-									 data-ad-format="auto"
-									 data-full-width-responsive="true">
-					</ins>
-				
-				<v-footer app>		
-				<v-bottom-navigation 	  
-					absolute
-					color="red"
-					grow
-				>
-								
 									
-									<v-btn v-for="(item, i) in master"
-										:href="item.url">
-										  <span>{{item.nama_menu}}</span>
-										  <v-icon>{{ item.icon }}</v-icon>
-									</v-btn>
-				</v-bottom-navigation>
+				<v-footer app>		
+					<v-bottom-navigation 	  
+						absolute
+						color="red"
+						grow
+					>
+						<v-btn v-for="(item, i) in master"
+							:href="item.url">
+							<span>{{item.nama_menu}}</span>
+							<v-icon>{{ item.icon }}</v-icon>
+						</v-btn>
+					</v-bottom-navigation>
 				</v-footer>		  
 						  
 				
@@ -330,7 +325,6 @@ new Vue({
 			  this.getMovie();
 			},
 			bukamodal: function (value) {
-				console.log(value)
 				this.dialog = true;
 				this.loading = true;
 				axios.get('https://api-ladokutu-movie.herokuapp.com/watch?url='+value.watch)
