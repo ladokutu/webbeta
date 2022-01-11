@@ -57,8 +57,8 @@
 						  <v-text-field
 							v-model="search"
 							label="Cari Movie"
-							
 							clearable
+							v-on:keyup.enter="getMovieSearch"
 						  ></v-text-field>	
 						  <v-btn icon 
 							@click="getMovieSearch"
