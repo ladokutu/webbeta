@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: ladokutu.info
+Token: 78327607b8867bda2d25a24140375f0592d925f6193f21ebbdfcf2536199b979
