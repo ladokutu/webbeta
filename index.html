@@ -127,11 +127,10 @@
 										  height="150px">
 										  
 										</v-img>
-										<v-card-title v-text="card.title"></v-card-title>
+										<v-card-subtitle v-text="card.title"></v-card-subtitle>
 										<v-card-text>
 										    <v-rating color="amber" readonly size="14"  
-											v-text="card.rating"
-											      >{{card.rating}}</v-rating>
+											v-model="card.rating">{{card.rating}}</v-rating>
 											
 											
 											 ,{{card.duration}}
