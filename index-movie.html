@@ -131,12 +131,11 @@
 										
 										<v-card-text>
 											<v-row align="center" class="mx-0">
-												
-											      
-											    {{card.rating}}<v-icon color="amber">mdi-star</v-icon>
-											     <v-chip>{{card.duration}}</v-chip>
+											    {{card.rating}}<v-icon color="amber" size="10">mdi-star</v-icon>,
+											     <v-chip>{{card.quality}}</v-chip><v-chip>{{card.duration}}</v-chip>
 											</v-row>
 										</v-card-text>
+										
 									  </v-card>
 									</v-col>
 									<!--
@@ -176,8 +175,7 @@
 							</v-card-text>
 						</v-col>
 					</v-container> 
-				
-	
+		
 					
 									
 				<v-footer app>		
@@ -261,8 +259,8 @@ new Vue({
 			dialog: false,
 			judul: null,
 			page: 1,
-            length: 430,
-            visible: 5,
+            		length: 430,
+            		visible: 5,
 			loading: false,
 			drawer: null,
 			master: [],
