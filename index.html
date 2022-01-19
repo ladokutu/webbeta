@@ -74,7 +74,7 @@
 				>
 						  <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-						  <v-toolbar-title>Ladokutu Info Movie</v-toolbar-title>
+						  <v-toolbar-title>Ladokutu Info</v-toolbar-title>
 						  	
 						  <v-spacer></v-spacer>
 							
@@ -86,7 +86,7 @@
 					<v-container fluid>
 								<v-row dense>
 									<v-col
-									  v-for="card in movie"
+									  v-for="card in berita"
 									  :key="card.title"
 									  :cols="3">
 									  <v-card @click="bukamodal(card)"
@@ -159,12 +159,12 @@
 								  >
 									<v-icon>mdi-close</v-icon>
 								  </v-btn>
-								  <v-toolbar-title>{{watch.title}}</v-toolbar-title>
+								  <v-toolbar-title>{{title}}</v-toolbar-title>
 								  <v-spacer></v-spacer>
 								  
 								</v-toolbar>
 								
-								<iframe id="ifrm" :src="watch.src" width="100%" height="100%"></iframe>
+								<iframe id="ifrm" :src="url" width="100%" height="100%"></iframe>
 						  </v-card>
 						</v-dialog>
 						<v-overlay :value="loading">
@@ -202,21 +202,17 @@ new Vue({
 		vuetify: new Vuetify(),
 		data: {
 			dialog: false,
-			page: 1,
-            length: 483,
-            visible: 5,
 			loading: false,
 			drawer: null,
 			master: [],
-			movie: [],
+			berita: [],
 			search: null,
-			watch: [],
-			url:null,
+			title: '',
+			url:'',
 		},
 		mounted(){
 			this.getItems();
-			this.getMovie();
-			this.getBox();
+			this.getBerita();
 		},
 		methods: {
 			getItems: function () {
@@ -230,11 +226,11 @@ new Vue({
 				})
 				this.loading = false;
 			},
-			getMovie: function () {
+			getBerita: function () {
 				this.loading = true;
 				axios.get('https://newsapi.org/v2/top-headlines?country=id&category=technology&apiKey=3964c57788ee4edcad4038d6bc318c18')
 					.then(res => {
-					this.movie=res.data.articles;
+					this.berita=res.data.articles;
 				})
 				.catch(err => {
 					console.log(err);
@@ -259,13 +255,10 @@ new Vue({
 			bukamodal: function (value) {
 				this.dialog = true;
 				this.loading = true;
-				axios.get('https://api-ladokutu-movie.herokuapp.com/watch?url='+value.watch)
-					.then(res => {
-					this.watch=res.data;
-				})
-				.catch(err => {
-					console.log(err);
-				})
+				
+				this.title = value.title;
+				this.url = value.url;
+				
 				this.loading = false;
 										
 			},
