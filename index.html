@@ -84,6 +84,7 @@
 				</v-app-bar>	   
 			
 					<v-container fluid>
+					
 								<v-row dense>
 									<v-col
 									  v-for="card in berita"
@@ -99,7 +100,10 @@
 										</v-img>
 										<v-card-title v-text="card.title"></v-card-title>
 										
-										<v-card-text v-text="card.description"/>	
+										<v-card-text>{{card.description}}</v-card-text>	
+										 <v-card-actions>
+										  <v-chip color="cyan">{{card.creator}}</v-chip><v-chip color="cyan">{{card.isoDate}}</v-chip>
+										</v-card-actions>
 										
 									  </v-card>
 									</v-col>
