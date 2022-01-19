@@ -84,47 +84,51 @@
 							<v-col
 								v-for="card in projects"
 								:key="card.id_aplikasi"
-								:cols="3">
-								<v-card >
-									<v-img :src="card.url_image"
-										class="white--text align-end"
-										gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-										height="150px">
-									</v-img>
-									<v-card-subtitle v-text="card.nama_aplikasi"></v-card-subtitle>	
+								:cols="4">
+								
+								
+								
+								<v-card
+									class="mx-auto"
+									max-width="344"
+									outlined
+								  >
+									<v-list-item three-line>
+									  <v-list-item-content>
+										
+										<v-card-subtitle v-text="card.nama_aplikasi"></v-card-subtitle>
+										<v-list-item-subtitle v-text="card.description"></v-list-item-subtitle>
+									  </v-list-item-content>
+										<v-avatar
+											class="ma-3"
+											size="125"
+											tile
+										  >
+										  <v-img :src="card.url_image"
+											class="white--text align-end"
+											gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+											height="120px" width="40">
+										</v-avatar>
+									</v-list-item>
+
 									<v-card-actions>
-										  <v-btn
-											color="orange lighten-2"
-											text
-										  >
-											Description
-										  </v-btn>
-
-										  <v-spacer></v-spacer>
-
-										  <v-btn
-											icon @click="show = !show"
-										  >
-											<v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-										  </v-btn>
+									  <v-btn
+										outlined
+										rounded
+										text
+										:href="card.url_download"
+									  >
+										Download
+									  </v-btn>
 									</v-card-actions>
-									<v-expand-transition >
-									  <div v-show="show">
-										<v-divider></v-divider>
-
-										<v-card-text>
-										   {{card.description}}
-										</v-card-text>
-									  </div>
-									</v-expand-transition>
-								</v-card>
+								  </v-card>
 								
 								
 							</v-col>
 						</v-row>
 					</v-container>
 					
-									
+					 <v-spacer></v-spacer> 				
 					<v-footer app>		
 						<v-bottom-navigation 	  
 							absolute
