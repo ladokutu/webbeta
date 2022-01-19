@@ -91,7 +91,7 @@
 									  :cols="3">
 									  <v-card @click="bukamodal(card)"
 										:loading="loading">
-										<v-img :src="card.urlToImage"
+										<v-img :src="card.image.small"
 										  class="white--text align-end"
 										  gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
 										  height="150px">
@@ -228,9 +228,9 @@ new Vue({
 			},
 			getBerita: function () {
 				this.loading = true;
-				axios.get('https://newsapi.org/v2/top-headlines?country=id&category=technology&apiKey=3964c57788ee4edcad4038d6bc318c18')
+				axios.get('https://berita-indo-api.vercel.app/v1/kumparan-news')
 					.then(res => {
-					this.berita=res.data.articles;
+					this.berita=res.data.data;
 				})
 				.catch(err => {
 					console.log(err);
@@ -257,7 +257,7 @@ new Vue({
 				this.loading = true;
 				
 				this.title = value.title;
-				this.url = value.url;
+				this.url = value.link;
 				
 				this.loading = false;
 										
