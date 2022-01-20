@@ -312,7 +312,7 @@ new Vue({
 				this.loading = false;
 			},
 			getMovie: function () {
-				this.loading = true;
+				this.reserve ();
 				axios.get('https://api-ladokutu-movie.herokuapp.com/movie?page='+this.page)
 					.then(res => {
 					this.movie=res.data.result;
@@ -358,9 +358,12 @@ new Vue({
 				.catch(err => {
 					console.log(err);
 				})
-				this.loading = false;
-										
+				this.loading = false;						
 			},
+			reserve () {
+				this.loading = true
+				setTimeout(() => (this.loading = false), 2000)
+			  },
 			  
 			  
 			
