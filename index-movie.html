@@ -86,17 +86,15 @@
 									  v-for="(item,i) in box"
 									  :key="i"
 									  :src="item.thumbnail"
-									  
-									  contain
 									  reverse-transition="fade-transition"
 									  transition="fade-transition"
 									  @click="bukamodal(item)"
 									  
 									>
-									  <v-card-title 
+									<v-card-title 
+									  
 									  class="white--text mt-8"
 									  v-text="item.title"></v-card-title>
-									  
 									</v-carousel-item>
 								</v-carousel>	
 					</v-container >	
