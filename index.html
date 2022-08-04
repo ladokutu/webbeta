@@ -90,7 +90,7 @@
 										  <v-chip class="ma-2"
 											      color="orange"
 											      text-color="white">{{card.creator}}</v-chip>
-										<v-chip color="cyan">{{card.isoDate}}</v-chip>
+										<v-chip color="cyan">{{card.pubDate}}</v-chip>
 										</v-card-actions>
 										
 									  </v-card>
@@ -274,7 +274,7 @@ new Vue({
 				this.reserve ();
 				axios.get('https://api-berita-indonesia.vercel.app/kumparan/terbaru')
 					.then(res => {
-					this.berita=res.data.data;
+					this.berita=res.data.data.posts;
 				})
 				.catch(err => {
 					console.log(err);
