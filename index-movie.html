@@ -343,7 +343,7 @@ new Vue({
 			},
 			getMovie: function () {
 				this.reserve ();
-				axios.get('http://node.tatamulia.co.id:8000/movie?page='+this.page)
+				axios.get('https://nodes.tatamulia.co.id:8443/movie?page='+this.page)
 					.then(res => {
 					this.movie=res.data.result;
 				})
@@ -354,7 +354,7 @@ new Vue({
 			},
 			getMovieSearch: function () {
 				this.loading = true;
-				axios.get('http://node.tatamulia.co.id:8000/search/'+this.search)
+				axios.get('https://nodes.tatamulia.co.id:8443/search/'+this.search)
 					.then(res => {
 					this.movie=res.data.result;
 				})
@@ -365,7 +365,7 @@ new Vue({
 			},
 			getBox: function () {
 				this.loading = true;
-				axios.get('http://node.tatamulia.co.id:8000/box_office')
+				axios.get('https://nodes.tatamulia.co.id:8443/box_office')
 					.then(res => {
 					this.box=res.data.result;
 				})
@@ -382,7 +382,7 @@ new Vue({
 				this.resume = true;
 				this.dialog = true;
 				this.loading = true;
-				axios.get('https://api-ladokutu-movie.herokuapp.com/watch?url='+value.watch)
+				axios.get('https://nodes.tatamulia.co.id:8443/watch?url='+value.watch)
 					.then(res => {
 					this.watch=res.data;
 				})
