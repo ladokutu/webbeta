@@ -266,7 +266,7 @@ new Vue({
 		methods: {
 			getItems: function () {
 				this.loading = true;
-				axios.get('https://core.ladokutu.info/index.php/Web/menu_web')
+				axios.get('https://node.tatamulia.co.id/index.php/Web/menu_web')
 					.then(res => {
 					this.master=res.data;
 				})
